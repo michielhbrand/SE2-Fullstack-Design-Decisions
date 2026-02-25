@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Using marked.js for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <!-- Custom dropdown navigation - the ONLY UI element -->
+    <div class="nav-container">
+        <div class="custom-dropdown" id="custom-dropdown">
+            <div class="dropdown-selected" id="dropdown-selected">
+                <span id="selected-text">Home</span>
+                <span class="dropdown-arrow">▼</span>
+            </div>
+            <div class="dropdown-options" id="dropdown-options">
+                <div class="dropdown-option" data-value="landing">Home</div>
+                <div class="dropdown-option" data-value="architecture">Architecture</div>
+                <div class="dropdown-option" data-value="frontend">Frontend</div>
+                <div class="dropdown-option" data-value="backend">Backend</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content area where Markdown will be rendered -->
+    <main id="content" class="content-area">
+        <!-- Markdown content will be dynamically loaded here -->
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

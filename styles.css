@@ -1,0 +1,449 @@
+/* ============================================
+   MINIMALISTIC DARK THEME STYLESHEET
+   ============================================
+   
+   CUSTOMIZATION GUIDE:
+   - Change accent color: modify --accent-color
+   - Change background: modify --bg-color
+   - Change font: modify --font-mono
+   - Adjust content width: modify --content-max-width
+   ============================================ */
+
+:root {
+    /* Color Palette - Change these to customize the theme */
+    --bg-color: #0d0d0d;           /* Near-black background */
+    --text-color: #e0e0e0;         /* Light gray text */
+    --text-muted: #888888;         /* Muted text for secondary content */
+    --accent-color: #00d9ff;       /* Teal accent - try #a78bfa (purple) or #10b981 (green) */
+    --code-bg: #1a1a1a;            /* Code block background */
+    --border-color: #333333;       /* Subtle borders */
+    
+    /* Typography */
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    
+    /* Layout */
+    --content-max-width: 850px;
+    --spacing-unit: 1.5rem;
+}
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-mono);
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+/* ============================================
+   CUSTOM NAVIGATION DROPDOWN
+   ============================================ */
+
+.nav-container {
+    max-width: var(--content-max-width);
+    margin: 0 auto 3rem auto;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.custom-dropdown {
+    position: relative;
+    min-width: 150px;
+    user-select: none;
+}
+
+.dropdown-selected {
+    background-color: var(--code-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.6rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.dropdown-selected:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px rgba(0, 217, 255, 0.3);
+}
+
+.custom-dropdown.open .dropdown-selected {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 12px rgba(0, 217, 255, 0.4);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.dropdown-arrow {
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+    transition: transform 0.2s ease;
+    color: var(--accent-color);
+}
+
+.custom-dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--code-bg);
+    border: 1px solid var(--accent-color);
+    border-top: none;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.2s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 217, 255, 0.2);
+}
+
+.custom-dropdown.open .dropdown-options {
+    max-height: 300px;
+    opacity: 1;
+}
+
+.dropdown-option {
+    padding: 0.6rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dropdown-option:last-child {
+    border-bottom: none;
+}
+
+.dropdown-option:hover {
+    background-color: rgba(0, 217, 255, 0.1);
+    color: var(--accent-color);
+    padding-left: 1.2rem;
+}
+
+.dropdown-option.selected {
+    background-color: rgba(0, 217, 255, 0.15);
+    color: var(--accent-color);
+}
+
+/* ============================================
+   CONTENT AREA
+   ============================================ */
+
+.content-area {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Fade-in animation when content loads */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   MARKDOWN TYPOGRAPHY
+   ============================================ */
+
+.content-area h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+    letter-spacing: -0.02em;
+}
+
+.content-area h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.content-area h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-color);
+}
+
+.content-area h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.6rem;
+    color: var(--text-muted);
+}
+
+.content-area p {
+    margin-bottom: 1.2rem;
+    color: var(--text-color);
+}
+
+.content-area a {
+    color: var(--accent-color);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.content-area a:hover {
+    border-bottom-color: var(--accent-color);
+}
+
+/* ============================================
+   LISTS
+   ============================================ */
+
+.content-area ul,
+.content-area ol {
+    margin-bottom: 1.2rem;
+    padding-left: 2rem;
+}
+
+.content-area li {
+    margin-bottom: 0.5rem;
+}
+
+.content-area ul ul,
+.content-area ol ol {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   CODE BLOCKS & INLINE CODE
+   ============================================ */
+
+.content-area code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+}
+
+.content-area :not(pre) > code {
+    background-color: var(--code-bg);
+    color: var(--accent-color);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+}
+
+.content-area pre {
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.2rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.content-area pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text-color);
+    display: block;
+    line-height: 1.6;
+}
+
+/* Syntax highlighting for code blocks */
+.content-area pre code .keyword {
+    color: #ff79c6;
+}
+
+.content-area pre code .string {
+    color: #50fa7b;
+}
+
+.content-area pre code .comment {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* ============================================
+   BLOCKQUOTES
+   ============================================ */
+
+.content-area blockquote {
+    border-left: 3px solid var(--accent-color);
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* ============================================
+   HORIZONTAL RULES
+   ============================================ */
+
+.content-area hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 2.5rem 0;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+
+.content-area table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+    display: block;
+}
+
+.content-area th,
+.content-area td {
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.content-area th {
+    background-color: var(--code-bg);
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.content-area tr:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* ============================================
+   IMAGES
+   ============================================ */
+
+.content-area img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    display: block;
+}
+
+/* ============================================
+   BLINKING CURSOR (Optional Enhancement)
+   ============================================ */
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    background-color: var(--accent-color);
+    margin-left: 4px;
+    animation: blink 1s infinite;
+    vertical-align: text-bottom;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+    
+    .content-area h1 {
+        font-size: 2rem;
+    }
+    
+    .content-area h2 {
+        font-size: 1.6rem;
+    }
+    
+    .content-area h3 {
+        font-size: 1.3rem;
+    }
+    
+    .content-area pre {
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .nav-container {
+        margin-bottom: 2rem;
+    }
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+
+.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* ============================================
+   SCROLLBAR STYLING (Optional)
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}

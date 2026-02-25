@@ -1,6 +1,6 @@
-# Minimalistic Static Site
+# SE2 Fullstack Design Decisions
 
-A clean, terminal-inspired static site built with pure HTML, CSS, and JavaScript. Features dynamic Markdown rendering with a dark theme and programmer-friendly aesthetic.
+A clean, terminal-inspired static site documenting the architectural and technical design decisions for the SE2 Fullstack project. Built with pure HTML, CSS, and JavaScript, featuring dynamic Markdown rendering with a dark theme and programmer-friendly aesthetic.
 
 ## 🎨 Features
 
@@ -16,13 +16,16 @@ A clean, terminal-inspired static site built with pure HTML, CSS, and JavaScript
 
 ```
 .
-├── index.html          # Main HTML file
-├── styles.css          # All styling and theme variables
-├── app.js             # Markdown loading and rendering logic
-└── pages/             # Markdown content files
-    ├── landing.md     # Landing page (default)
-    ├── frontend.md    # Frontend development page
-    └── backend.md     # Backend development page
+├── index.html              # Main HTML file
+├── styles.css              # All styling and theme variables
+├── app.js                  # Markdown loading and rendering logic
+└── pages/                  # Markdown content files
+    ├── landing.md          # Landing page (default)
+    ├── architecture.md     # System architecture decisions
+    ├── frontends.md        # Frontend application decisions
+    ├── invoice-tracker-api.md  # Invoice Tracker API decisions
+    ├── management-api.md   # Management API decisions
+    └── microservices.md    # Microservices decisions
 ```
 
 ## 🚀 Quick Start
@@ -136,8 +139,11 @@ Edit the max-width in [`styles.css`](styles.css:21):
 All content is stored as Markdown files in the `pages/` directory. Simply edit these files to update your site:
 
 - [`pages/landing.md`](pages/landing.md) — Landing page
-- [`pages/frontend.md`](pages/frontend.md) — Frontend page
-- [`pages/backend.md`](pages/backend.md) — Backend page
+- [`pages/architecture.md`](pages/architecture.md) — System Architecture
+- [`pages/frontends.md`](pages/frontends.md) — Frontend Applications
+- [`pages/invoice-tracker-api.md`](pages/invoice-tracker-api.md) — Invoice Tracker API
+- [`pages/management-api.md`](pages/management-api.md) — Management API
+- [`pages/microservices.md`](pages/microservices.md) — Microservices
 
 ### Markdown Features Supported
 

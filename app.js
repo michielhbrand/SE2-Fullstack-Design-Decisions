@@ -219,8 +219,10 @@ function selectPage(pageName) {
     const pageNames = {
         'landing': 'Home',
         'architecture': 'Architecture',
-        'frontend': 'Frontend',
-        'backend': 'Backend'
+        'frontends': 'Frontends',
+        'invoice-tracker-api': 'Invoice Tracker API',
+        'management-api': 'Management API',
+        'microservices': 'Microservices'
     };
     selectedText.textContent = pageNames[pageName] || pageName;
     
@@ -310,7 +312,7 @@ if (document.readyState === 'loading') {
  * Preload all pages for faster navigation (optional)
  */
 async function preloadAllPages() {
-    const pages = ['landing', 'frontend', 'backend'];
+    const pages = ['landing', 'architecture', 'frontends', 'invoice-tracker-api', 'management-api', 'microservices'];
     
     for (const page of pages) {
         try {
